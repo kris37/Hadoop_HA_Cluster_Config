@@ -1,0 +1,137 @@
+<configuration>
+
+    <!-- 自定义属性 -->
+    <property>
+        <name>ha.zk1.quorum</name>
+        <value>10.14.1.18:2181</value>
+    </property>
+
+    <property>
+        <name>ha.zk2.quorum</name>
+        <value>10.14.1.26:2181</value>
+    </property>
+
+    <property>
+        <name>ha.zk3.quorum</name>
+        <value>10.14.1.27:2181</value>
+    </property>
+    <!-- 自定义属性 -->
+
+    <!--客户端连接HDFS时，默认的路径前缀-->
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://qyer</value>
+    </property>
+    <!--A base for other temporary directories.-->
+    <property>
+        <name>hadoop.tmp.dir</name>
+        <value>/hdd1/hdfs/tmp</value>
+    </property>
+
+    <property>
+        <name>io.file.buffer.size</name>
+        <value>4096</value>
+    </property>
+
+    <property>
+        <name>io.compression.codecs</name>
+        <value>
+            org.apache.hadoop.io.compress.GzipCodec,
+            org.apache.hadoop.io.compress.DefaultCodec,
+            org.apache.hadoop.io.compress.BZip2Codec,
+            org.apache.hadoop.io.compress.SnappyCodec
+        </value>
+    </property>
+
+    <property>
+        <name>ha.zookeeper.quorum</name>
+        <value>${ha.zk1.quorum},${ha.zk2.quorum},${ha.zk3.quorum}</value>
+    </property>
+
+    <!--The local directory where sequence file stores intermediate data files during merge. -->
+    <property>
+        <name>io.seqfile.local.dir</name>
+        <value>
+            /hdd1/io/local/,
+            /hdd2/io/local/,
+            /hdd3/io/local/,
+            /hdd4/io/local/,
+            /hdd5/io/local/,
+            /hdd6/io/local/,
+            /hdd7/io/local/,
+            /hdd8/io/local/,
+            /hdd9/io/local/,
+            /hdd10/io/local/,
+            /hdd11/io/local/,
+            /hdd12/io/local/,
+            /hdd13/io/local/,
+            /hdd14/io/local/,
+            /hdd15/io/local/,
+            /hdd16/io/local/,
+            /hdd17/io/local/,
+            /hdd18/io/local/,
+            /hdd19/io/local/,
+            /hdd20/io/local/,
+            /hdd21/io/local/,
+            /hdd22/io/local/,
+            /hdd23/io/local/,
+            /hdd24/io/local/,
+            /hdd25/io/local/,
+            /hdd26/io/local/,
+            /hdd27/io/local/,
+            /hdd28/io/local/,
+            /hdd29/io/local/,
+            /hdd30/io/local/,
+            /hdd31/io/local/,
+            /hdd32/io/local/,
+            /hdd33/io/local/,
+            /hdd34/io/local/,
+            /hdd35/io/local/,
+            /hdd36/io/local/
+        </value>
+    </property>
+
+    <!--Indicates the length of the listen queue for servers accepting client connections.-->
+    <property>
+        <name>ipc.server.listen.queue.size</name>
+        <value>128</value>
+    </property>
+    <!--The maximum number of concurrent connections a server is allowed to accept. 0 means no limit.-->
+    <property>
+        <name>ipc.server.max.connections</name>
+        <value>0</value>
+    </property>
+
+    <!--配置一个非标准用户名或端口(docker一般ssh的话都需要修改端口)-->
+    <property>
+        <name>dfs.ha.fencing.methods</name>
+        <value>sshfence(root:2222)</value>
+    </property>
+    <property>
+        <name>dfs.ha.fencing.ssh.connect-timeout</name>
+        <value>30000</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.fencing.ssh.private-key-files</name>
+        <value>/root/.ssh/id_rsa</value>
+    </property>
+
+    <property>
+        <name>fs.trash.interval</name>
+        <value>10080</value>
+    </property>
+
+    <property>
+        <name>fs.hdfs.impl</name>
+        <value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+        <description>The FileSystem for hdfs: uris.</description>
+    </property>
+
+    <property>
+        <name>fs.file.impl</name>
+        <value>org.apache.hadoop.fs.LocalFileSystem</value>
+        <description>The FileSystem for hdfs: uris.</description>
+    </property>
+
+</configuration>

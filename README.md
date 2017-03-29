@@ -1,2 +1,1 @@
-# Hadoop_HA_Cluster_Config
-self-config-docker
+hadoop-HA-cluster-config

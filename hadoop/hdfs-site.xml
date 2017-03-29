@@ -1,0 +1,187 @@
+<configuration>
+    <!--命名空间的逻辑名称-->
+    <property>
+        <name>dfs.nameservices</name>
+        <value>qyer</value>
+    </property>
+
+    <!-- 保留200G空间 -->
+    <property>
+        <name>dfs.datanode.du.reserved</name>
+        <value>209715200</value>
+    </property>
+
+    <!--命名空间中所有NameNode的唯一标示名称-->
+    <property>
+        <name>dfs.ha.namenodes.qyer</name>
+        <value>nn1,nn2</value>
+    </property>
+
+    <!-- 自定义属性 begin-->
+    <property>
+        <name>dfs.namenode.nn1.ip</name>
+        <value>10.14.1.18</value>
+    </property>
+    <property>
+        <name>dfs.namenode.nn2.ip</name>
+        <value>10.14.1.26</value>
+    </property>
+
+    <!--qjournal 进程-->
+    <property>
+        <name>dfs.qjournal1.ip</name>
+        <value>${dfs.namenode.nn1.ip}</value>
+    </property>
+    <property>
+        <name>dfs.qjournal2.ip</name>
+        <value>${dfs.namenode.nn2.ip}</value>
+    </property>
+    <property>
+        <name>dfs.qjournal3.ip</name>
+        <value>10.14.1.27</value>
+    </property>
+    <!-- 自定义属性 end-->
+
+    <!--namenode监听的RPC地址-->
+    <property>
+        <name>dfs.namenode.rpc-address.qyer.nn1</name>
+        <value>${dfs.namenode.nn1.ip}:8020</value>
+    </property>
+    <property>
+        <name>dfs.namenode.rpc-address.qyer.nn2</name>
+        <value>${dfs.namenode.nn2.ip}:8020</value>
+    </property>
+
+    <!--namenode监听的http地址-->
+    <!--
+    <property>
+        <name>dfs.namenode.http-address.qyer.nn1</name>
+        <value>${dfs.namenode.nn1.ip}:50070</value>
+    </property>
+    <property>
+        <name>dfs.namenode.http-address.qyer.nn2</name>
+        <value>${dfs.namenode.nn2.ip}:50070</value>
+    </property>
+    -->
+
+    <!-- NameNodes可以读写edit log内容。URI的格式"qjournal://host1:port1;host2:port2;host3:port3/journalId" -->
+    <property>
+        <name>dfs.namenode.shared.edits.dir</name>
+        <value>qjournal://${dfs.qjournal1.ip}:8485;${dfs.qjournal2.ip}:8485;${dfs.qjournal3.ip}:8485/qyer</value>
+    </property>
+
+    <property>
+        <name>dfs.journalnode.edits.dir</name>
+        <value>/hdd1/hdfs/journal</value>
+    </property>
+
+    <!-- dfs.ha.fencing.methods 配置active namenode出错时的处理类。当active namenode出错时，一般需要关闭该进程。处理方式可以是ssh也可以是shell。 -->
+
+    <property>
+        <name>dfs.client.failover.proxy.provider.qyer</name>
+        <value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+    </property>
+
+    <!-- 文件副本数 -->
+    <property>
+        <name>dfs.replication</name>
+        <value>5</value>
+    </property>
+
+    <property>
+        <name>dfs.ha.automatic-failover.enabled</name>
+        <value>true</value>
+    </property>
+
+    <!--namenode-->
+    <!--name node的上持久化存储元数据和事务日志的路径。,以,号隔开,hdfs会把元数据冗余复制到这些目录，一般这些目录是不同的块设备-->
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>
+            /hdd1/hdfs/nn/,
+            /hdd11/hdfs/nn/,
+            /hdd21/hdfs/nn/,
+            /hdd31/hdfs/nn/
+        </value>
+    </property>
+
+    <!--node node的事务文件存储的目录,以,号隔开,hdfs会把事务文件冗余复制到这些目录，一般这些目录是不同的块设备-->
+    <property>
+        <name>dfs.name.edits.dir</name>
+        <value>${dfs.namenode.name.dir}</value>
+    </property>
+
+    <!-- datanode -->
+    <!-- The number of server threads for the datanode. -->
+    <property>
+        <name>dfs.datanode.handler.count</name>
+        <value>30</value>
+    </property>
+    <property>
+        <name>dfs.namenode.handler.count</name>
+        <value>30</value>
+    </property>
+
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>
+            /hdd1/hdfs/dn/,
+            /hdd2/hdfs/dn/,
+            /hdd3/hdfs/dn/,
+            /hdd4/hdfs/dn/,
+            /hdd5/hdfs/dn/,
+            /hdd6/hdfs/dn/,
+            /hdd7/hdfs/dn/,
+            /hdd8/hdfs/dn/,
+            /hdd9/hdfs/dn/,
+            /hdd10/hdfs/dn/,
+            /hdd11/hdfs/dn/,
+            /hdd12/hdfs/dn/,
+            /hdd13/hdfs/dn/,
+            /hdd14/hdfs/dn/,
+            /hdd15/hdfs/dn/,
+            /hdd16/hdfs/dn/,
+            /hdd17/hdfs/dn/,
+            /hdd18/hdfs/dn/,
+            /hdd19/hdfs/dn/,
+            /hdd20/hdfs/dn/,
+            /hdd21/hdfs/dn/,
+            /hdd22/hdfs/dn/,
+            /hdd23/hdfs/dn/,
+            /hdd24/hdfs/dn/,
+            /hdd25/hdfs/dn/,
+            /hdd26/hdfs/dn/,
+            /hdd27/hdfs/dn/,
+            /hdd28/hdfs/dn/,
+            /hdd29/hdfs/dn/,
+            /hdd30/hdfs/dn/,
+            /hdd31/hdfs/dn/,
+            /hdd32/hdfs/dn/,
+            /hdd33/hdfs/dn/,
+            /hdd34/hdfs/dn/,
+            /hdd35/hdfs/dn/,
+            /hdd36/hdfs/dn/
+        </value>
+    </property>
+
+    <property>
+        <name>dfs.blocksize</name>
+        <value>512m</value>
+    </property>
+
+
+    <property>
+        <name>dfs.hosts</name>
+        <value></value>
+    </property>
+    <property>
+        <name>dfs.hosts.exclude</name>
+        <value></value>
+    </property>
+
+    <!-- 默认坏3块盘,datanode才会stop -->
+    <property>
+        <name>dfs.datanode.failed.volumes.tolerated</name>
+        <value>3</value>
+    </property>
+</configuration>

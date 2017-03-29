@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+
+    <property>
+        <name>gc.path</name>
+        <value>${hadoop.tmp.dir}</value>
+    </property>
+
+
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+
+
+    <property>
+        <name>mapreduce.map.output.compress</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>mapred.map.output.compress.codec</name>
+        <value>org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+
+
+    <!-- map占的资源-->
+    <property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>4096</value>
+    </property>
+
+    <property>
+        <name>mapreduce.map.cpu.vcores</name>
+        <value>1</value>
+    </property>
+
+    <!-- reduce占的资源-->
+    <property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>4096</value>
+    </property>
+
+    <property>
+        <name>mapreduce.reduce.cpu.vcores</name>
+        <value>1</value>
+    </property>
+
+
+    <!--启动jvm的参数-->
+    <property>
+        <name>mapred.child.java.opts</name>
+        <value>-Xmx3712m -verbose:gc -Xloggc:${gc.path}/mr-%t.gc</value>
+    </property>
+
+    <!--
+    <property>
+        <name>mapred.child.env</name>
+        <value>LD_LIBRARY_PATH=/usr/local/hadoop/lzo/lib</value>
+    </property>
+    -->
+
+    <!-- am的内存,默认为6G -->
+    <property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>6144</value>
+    </property>
+    <!-- 启动am进程的内存为5G -->
+    <property>
+        <name>yarn.app.mapreduce.am.command-opts</name>
+        <value>-Xmx5120m -verbose:gc -Xloggc:${gc.path}/am-%t.gc</value>
+    </property>
+    <property>
+        <name>yarn.app.mapreduce.am.resource.cpu-vcores</name>
+        <value>1</value>
+    </property>
+
+
+    <!--map/reduce的中间结果保存路径-->
+    <property>
+        <name>mapreduce.cluster.local.dir</name>
+        <value>
+            /hdd1/yarn/mapred/local/,
+            /hdd2/yarn/mapred/local/,
+            /hdd3/yarn/mapred/local/,
+            /hdd4/yarn/mapred/local/,
+            /hdd5/yarn/mapred/local/,
+            /hdd6/yarn/mapred/local/,
+            /hdd7/yarn/mapred/local/,
+            /hdd8/yarn/mapred/local/,
+            /hdd9/yarn/mapred/local/,
+            /hdd10/yarn/mapred/local/,
+            /hdd11/yarn/mapred/local/,
+            /hdd12/yarn/mapred/local/,
+            /hdd13/yarn/mapred/local/,
+            /hdd14/yarn/mapred/local/,
+            /hdd15/yarn/mapred/local/,
+            /hdd16/yarn/mapred/local/,
+            /hdd17/yarn/mapred/local/,
+            /hdd18/yarn/mapred/local/,
+            /hdd19/yarn/mapred/local/,
+            /hdd20/yarn/mapred/local/,
+            /hdd21/yarn/mapred/local/,
+            /hdd22/yarn/mapred/local/,
+            /hdd23/yarn/mapred/local/,
+            /hdd24/yarn/mapred/local/,
+            /hdd25/yarn/mapred/local/,
+            /hdd26/yarn/mapred/local/,
+            /hdd27/yarn/mapred/local/,
+            /hdd28/yarn/mapred/local/,
+            /hdd29/yarn/mapred/local/,
+            /hdd30/yarn/mapred/local/,
+            /hdd31/yarn/mapred/local/,
+            /hdd32/yarn/mapred/local/,
+            /hdd33/yarn/mapred/local/,
+            /hdd34/yarn/mapred/local/,
+            /hdd35/yarn/mapred/local/,
+            /hdd36/yarn/mapred/local/
+        </value>
+    </property>
+
+
+    <property>
+        <name>mapreduce.job.queuename</name>
+        <value>default</value>
+    </property>
+
+    <property>
+        <name>mapreduce.job.maps</name>
+        <value>8</value>
+    </property>
+    <property>
+        <name>mapreduce.job.reduce</name>
+        <value>2</value>
+    </property>
+
+
+    <property>
+        <name>mapreduce.jobhistory.address </name>
+        <value>10.14.1.27:10020</value>
+    </property>
+
+    <property>
+        <name>mapreduce.jobhistory.webapp.address</name>
+        <value>10.14.1.27:19888</value>
+    </property>
+
+</configuration>

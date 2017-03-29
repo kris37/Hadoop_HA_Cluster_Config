@@ -1,0 +1,202 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+    <property>
+        <name>yarn.resourcemanager.hostname</name>
+        <value>10.14.1.27</value>
+    </property>
+    <!-- Site specific YARN configuration properties -->
+    <property>
+        <name>yarn.nodemanager.aux-services</name>
+        <value>mapreduce_shuffle</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.aux-services.mapreduce_shuffle.class</name>
+        <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.scheduler.class</name>
+        <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+    </property>
+
+    <property>
+        <name>yarn.resourcemanager.recovery.enabled</name>
+        <value>false</value>
+    </property>
+
+
+    <!-- 一个container最小申请的内存 此处设置1G-->
+    <property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>1024</value>
+    </property>
+
+    <!-- 一个container最大申请的内存,此处设置56G内存,体现在spark上executor最好设置成48G-->
+    <property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>57344</value>
+    </property>
+
+    <!--CPU资源-->
+    <property>
+        <name>yarn.scheduler.minimum-allocation-vcores</name>
+        <value>1</value>
+    </property>
+    <!--最大占据一半的cpu-->
+    <property>
+        <name>yarn.scheduler.maximum-allocation-vcores</name>
+        <value>20</value>
+    </property>
+
+
+    <!-- NodeManager提供的最大内存 此处设置240内存,机器的内存是256G内存-->
+    <property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>245760</value>
+    </property>
+
+    <!-- 虚拟内存和物理内存的比重 -->
+    <property>
+        <name>yarn.nodemanager.vmem-pmem-ratio</name>
+        <value>2.1</value>
+    </property>
+    <!--机器的cpu是40核,我们用32核-->
+    <property>
+        <name>yarn.nodemanager.resource.cpu-vcores</name>
+        <value>60</value>
+    </property>
+
+    <property>
+        <name>yarn.nodemanager.local-dirs</name>
+        <value>
+            /hdd1/yarn/nn/local/,
+            /hdd2/yarn/nn/local/,
+            /hdd3/yarn/nn/local/,
+            /hdd4/yarn/nn/local/,
+            /hdd5/yarn/nn/local/,
+            /hdd6/yarn/nn/local/,
+            /hdd7/yarn/nn/local/,
+            /hdd8/yarn/nn/local/,
+            /hdd9/yarn/nn/local/,
+            /hdd10/yarn/nn/local/,
+            /hdd11/yarn/nn/local/,
+            /hdd12/yarn/nn/local/,
+            /hdd13/yarn/nn/local/,
+            /hdd14/yarn/nn/local/,
+            /hdd15/yarn/nn/local/,
+            /hdd16/yarn/nn/local/,
+            /hdd17/yarn/nn/local/,
+            /hdd18/yarn/nn/local/,
+            /hdd19/yarn/nn/local/,
+            /hdd20/yarn/nn/local/,
+            /hdd21/yarn/nn/local/,
+            /hdd22/yarn/nn/local/,
+            /hdd23/yarn/nn/local/,
+            /hdd24/yarn/nn/local/,
+            /hdd25/yarn/nn/local/,
+            /hdd26/yarn/nn/local/,
+            /hdd27/yarn/nn/local/,
+            /hdd28/yarn/nn/local/,
+            /hdd29/yarn/nn/local/,
+            /hdd30/yarn/nn/local/,
+            /hdd31/yarn/nn/local/,
+            /hdd32/yarn/nn/local/,
+            /hdd33/yarn/nn/local/,
+            /hdd34/yarn/nn/local/,
+            /hdd35/yarn/nn/local/,
+            /hdd36/yarn/nn/local/
+        </value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.log-dirs</name>
+        <value>
+            /hdd1/yarn/userlogs/,
+            /hdd2/yarn/userlogs/,
+            /hdd3/yarn/userlogs/,
+            /hdd4/yarn/userlogs/,
+            /hdd5/yarn/userlogs/,
+            /hdd6/yarn/userlogs/,
+            /hdd7/yarn/userlogs/,
+            /hdd8/yarn/userlogs/,
+            /hdd9/yarn/userlogs/,
+            /hdd10/yarn/userlogs/,
+            /hdd11/yarn/userlogs/,
+            /hdd12/yarn/userlogs/,
+            /hdd13/yarn/userlogs/,
+            /hdd14/yarn/userlogs/,
+            /hdd15/yarn/userlogs/,
+            /hdd16/yarn/userlogs/,
+            /hdd17/yarn/userlogs/,
+            /hdd18/yarn/userlogs/,
+            /hdd19/yarn/userlogs/,
+            /hdd20/yarn/userlogs/,
+            /hdd21/yarn/userlogs/,
+            /hdd22/yarn/userlogs/,
+            /hdd23/yarn/userlogs/,
+            /hdd24/yarn/userlogs/,
+            /hdd25/yarn/userlogs/,
+            /hdd26/yarn/userlogs/,
+            /hdd27/yarn/userlogs/,
+            /hdd28/yarn/userlogs/,
+            /hdd29/yarn/userlogs/,
+            /hdd30/yarn/userlogs/,
+            /hdd31/yarn/userlogs/,
+            /hdd32/yarn/userlogs/,
+            /hdd33/yarn/userlogs/,
+            /hdd34/yarn/userlogs/,
+            /hdd35/yarn/userlogs/,
+            /hdd36/yarn/userlogs/
+        </value>
+    </property>
+
+
+    <!--Whether to enable log aggregation. Log aggregation collects each container's logs and moves these logs onto a file-system, for e.g. HDFS -->
+    <property>
+        <name>yarn.log-aggregation-enable</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir</name>
+        <value>/logs</value>
+    </property>
+    <property>
+        <name>yarn.nodemanager.remote-app-log-dir-suffix</name>
+        <value>logs</value>
+    </property>
+
+
+    <property>
+        <description>The hostname of the Timeline service web application.</description>
+        <name>yarn.timeline-service.hostname</name>
+        <value>10.14.1.27</value>
+    </property>
+
+    <property>
+        <description>Indicate to ResourceManager as well as clients whether
+            history-service is enabled or not. If enabled, ResourceManager starts
+            recording historical data that Timelien service can consume. Similarly,
+            clients can redirect to the history service when applications
+            finish if this is enabled.</description>
+        <name>yarn.timeline-service.generic-application-history.enabled</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>yarn.log.server.url</name>
+        <value>http://${yarn.resourcemanager.hostname}:19888/jobhistory/logs/</value>
+    </property>
+</configuration>
